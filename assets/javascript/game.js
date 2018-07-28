@@ -17,6 +17,7 @@ var guessesRemaining=6;
 var stage=" ";
 var text= " ";
 
+
 // createa a var for "guess correctly"
     // guess correctly will be a boolean false
 
@@ -24,6 +25,8 @@ var guessCorrectly= false;
 
 // create a generator where the words will appear
 document.querySelector("#stage").innerHTML=stage;
+
+
 
 // for loop for fruits and an array for underscores
 var random = rockBands[Math.floor(Math.random() * rockBands.length)]
@@ -36,6 +39,7 @@ for (var i=0; i<random.length; i++){
     
     console.log(underscores)
 }
+
 document.querySelector("#stage").innerHTML=underscores;
 
   
@@ -60,14 +64,17 @@ document.querySelector("#guess-counter").innerHTML= ("guesses: " + guessesRemain
             else { 
                 console.log("wrong");
             }
-            
-            
+          
+
+
 
         }
-        
+//create partial words to replace the underscore with the correct letter from userGuess
+// document.getElementById("#stage").text= (userGuess);
     };
 
-
+   
+   
     // MAIN PROCESS
 
     // calling a function to press the .onkeyup to start the game.
