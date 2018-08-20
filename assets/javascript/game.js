@@ -2,6 +2,8 @@
     // apples, bannanas, kiwis, pinapples, mangos
 var rockBands=["queen","AC/DC", "nirvana", "metallica", "journey", "muse", "coldplay", "incubus"];
 
+// var x = document.getElementById("myAudio"); 
+// x.play()
 
 
 // start with a variable of 0 for win
@@ -35,29 +37,37 @@ console.log(random)
 
 // replaces the underscore array with "_"
 for (var i=0; i<random.length; i++){
-    underscores[i] = "_"
+    
+    if (random[i]!==" "){
+        underscores[i] = "_"
+    }
     
     console.log(underscores)
 }
 
+
 document.querySelector("#stage").innerHTML=underscores;
 
-  
+
 // create inner HTML for win/losses/guesses
-document.querySelector("#win").innerHTML=("win: "+ win);
+document.querySelector("#win").innerHTML=(win);
 // make them split up
-document.querySelector("#losses").innerHTML="loss: " +loss;
+// document.querySelector("#losses").innerHTML="loss: " +loss;
 // make them split up
-document.querySelector("#guess-counter").innerHTML= ("guesses: " + guessesRemaining);
+// document.querySelector("#guesses").innerHTML= (guessesRemaining);
 
 // create a function for onkeyup and a var for function
     document.onkeyup = function(event) {
-        var userGuess = event.key;
-       
+        var userkey = event.key;
+        var userGuess= userkey.toLowerCase()
+        var guessesArray= [];
+        guessesArray.push(userGuess)
+        // document.querySelector("#stage").innerHTML=underscores;
         for (var i=0; i< random.length; i++) {
-            if (random[i]== userGuess){
+
+            if (guessesArray.includes(random[i])){
                 console.log("this works");
-                underscores[i]=userGuess;
+                underscores[i]=random[i];
                 console.log(underscores);
                 guessCorrectly=true;
             }
@@ -69,9 +79,15 @@ document.querySelector("#guess-counter").innerHTML= ("guesses: " + guessesRemain
 
 
         }
+      
+        var selection=underscores.toString().replace(/,/g," ");
+        document.querySelector("#stage").innerHTML=selection;
+        console.log("here", typeof selection);
+} ;
+
 //create partial words to replace the underscore with the correct letter from userGuess
-// document.getElementById("#stage").text= (userGuess);
-    };
+
+   
 
    
    
